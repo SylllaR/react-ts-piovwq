@@ -56,8 +56,11 @@ export const MenuPage: React.FC<Props> = ({ products, getProducts }) => {
     setStyle(`translateX(${groupIndex * -100}%)`);
   }, [groupIndex]);
 
+  const scollToRef = React.useRef();
+
   const changeGroup = (side: string) => {
     setGroupIndex(side === 'left' ? groupIndex - 1 : groupIndex + 1);
+    document.getElementById('cards-group').scrollIntoView();
   };
 
   return (
@@ -91,6 +94,8 @@ export const MenuPage: React.FC<Props> = ({ products, getProducts }) => {
         <div className={cx('cards')}>
           {Category.map((cat) => (
             <div
+              id="cards-group"
+              ref={scollToRef}
               className={cx('cards-group')}
               key={cat.category + 'group'}
               style={{ transform: style }}

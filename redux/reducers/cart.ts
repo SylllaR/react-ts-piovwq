@@ -1,4 +1,4 @@
-import { Cart, AddProduct } from '../../constatnts';
+import { Cart, AddProduct, CartModal } from '../../constatnts';
 import cart from '../store/cart';
 
 export default function (state = cart, action) {
@@ -11,6 +11,17 @@ export default function (state = cart, action) {
       return {
         ...state,
         ...action.payload,
+      };
+
+    case CartModal.OPEN:
+      return {
+        ...state,
+        isOpen: action.payload,
+      };
+    case CartModal.CANCEL_ALL:
+      return {
+        ...state,
+        order: {},
       };
 
     default:

@@ -1,7 +1,7 @@
 import Home from '../pages/home';
 import MenuPage from '../pages/menu';
 import DeliveryPage from '../pages/delivery';
-import OrderPage from '../pages/order';
+import ContactsPage from '../pages/contacts';
 
 export const isDefaultPages = [
   {
@@ -17,7 +17,7 @@ export const isDefaultPages = [
     component: DeliveryPage,
   },
   {
-    path: '/order',
-    component: OrderPage,
+    path: '/contacts',
+    component: ContactsPage,
   },
 ];

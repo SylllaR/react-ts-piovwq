@@ -9,3 +9,9 @@ export enum AddProduct {
   SUCCES = 'ADD_PRODUCT_SUCCES',
   ERROR = 'ADD_PRODUCT_ERROR',
 }
+
+export enum CartModal {
+  OPEN = 'OPEN_CART_MODAL',
+  CLOSE = 'CLOSE_CART_MODAL',
+  CANCEL_ALL = 'CANCEL_ALL',
+}

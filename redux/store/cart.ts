@@ -1,3 +1,6 @@
-const cart = {};
+const cart = {
+  isOpen: false,
+  order: {},
+};
 
 export default cart;

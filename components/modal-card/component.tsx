@@ -43,7 +43,7 @@ export const ModalCard: React.FC<ModalCardProps> = ({
   const [orderAmount, setOrderAmount] = React.useState(cart[data.id] || 1);
 
   const addProductToCart = (id: number) => {
-    addProduct((cart[id] = orderAmount));
+    addProduct((cart.order[id] = orderAmount));
   };
 
   const increaseOrder = () => {

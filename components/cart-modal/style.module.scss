@@ -1,0 +1,12 @@
+.cart-modal {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  height: calc(100vh - 60px);
+  width: 500px;
+  background-color: black;
+  z-index: 999;
+}
+.p {
+  color: white;
+}

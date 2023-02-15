@@ -6,21 +6,32 @@ import styles from './style.module.scss';
 import { useTranslation } from 'react-i18next';
 import { LangSelector } from '../';
 import { CartIcon, InstIcon, FBIcon } from '../../img';
-import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 interface HeaderProps {
   cart: any;
   getCartAmountAction: any;
+  openCartModal: any;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   cart,
   getCartAmountAction,
+  openCartModal,
 }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const [orderAmount, setOrderAmount] = React.useState(
+    Object.keys(cart.order).length
+  );
+
+  const openCloseModal = () => {
+    openCartModal(!cart.isOpen);
+  };
+
+  React.useEffect(() => {
+    setOrderAmount(Object.keys(cart.order).length);
+  }, [cart]);
 
   const routeList = [
     {
@@ -37,13 +48,9 @@ export const Header: React.FC<HeaderProps> = ({
     },
     {
       name: t('header.contacts'),
-      route: '/temp',
+      route: '/contacts',
     },
   ];
-
-  const goToOrderPage = () => {
-    navigate('/order');
-  };
 
   return (
     <div className={cx('header-container')}>
@@ -77,13 +84,11 @@ export const Header: React.FC<HeaderProps> = ({
         <div className={cx('socials')}>
           <LangSelector />
 
-          <button onClick={goToOrderPage} className={cx('cart-btn')}>
+          <button onClick={openCloseModal} className={cx('cart-btn')}>
             <CartIcon />
 
-            {Object.keys(cart).length !== 0 && (
-              <mark className={cx('cart-btn-mark')}>
-                {Object.keys(cart).length}
-              </mark>
+            {orderAmount !== 0 && (
+              <mark className={cx('cart-btn-mark')}>{orderAmount}</mark>
             )}
           </button>
 

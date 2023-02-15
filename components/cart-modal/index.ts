@@ -1,9 +1,9 @@
-import { Header } from './component';
+import { CartModal } from './component';
 import get from 'lodash/get';
 import { connect } from 'react-redux';
 import {
-  getCartAmountAction,
   openCartModalAction,
+  cancelAllOrdersAction,
 } from '../../redux/actions/cart';
 
 export const mapStateToProps = (state) => ({
@@ -11,8 +11,8 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getCartAmount: () => dispatch(getCartAmountAction()),
   openCartModal: (props: boolean) => dispatch(openCartModalAction(props)),
+  cancelAllOrders: () => dispatch(cancelAllOrdersAction()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(CartModal);
